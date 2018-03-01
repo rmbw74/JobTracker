@@ -23,12 +23,12 @@ namespace JobTracker.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
-        public string Status { get; set; }
+        
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
 
         [Required]
-        [Display(Name = "Salary or Salary Range")]
-        public string SalaryRange { get; set; }
+        public string Email { get; set; }
 
         public string Notes { get; set; }
 
