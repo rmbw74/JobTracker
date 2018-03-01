@@ -14,6 +14,10 @@ namespace JobTracker.Data
             : base(options)
         {
         }
+        public DbSet<Company> Company { get; set; }
+        public DbSet<Contact> Contact { get; set; }
+        public DbSet<Job> Job { get; set; }
+        public DbSet<JobContacts> JobContacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
