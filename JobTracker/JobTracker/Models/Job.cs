@@ -30,6 +30,6 @@ namespace JobTracker.Models
 
         //Foreign Keys
 
-        public virtual ICollection<Company> Company { get; set; }
+        public Company Company { get; set; }
     }
 }

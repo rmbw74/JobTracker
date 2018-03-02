@@ -1,7 +1,7 @@
-﻿@model JobTracker.Models.Job
+﻿@model JobTracker.Models.JobViewModels.CreateJobViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add a Job";
 }
 
 <h2>Create</h2>
@@ -13,30 +13,45 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+                 @Html.LabelFor(model => model.Job.Title)
+                <input asp-for="@Model.Job.Title" class="form-control" />
+                <span asp-validation-for="@Model.Job.Title" class="text-danger" />
+
             </div>
             <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
+                @Html.LabelFor(model => model.Job.Location)
+                <input asp-for="@Model.Job.Location" class="form-control" />
+                <span asp-validation-for="@Model.Job.Location" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
+                @Html.LabelFor(model => model.Job.Status)
+                <input asp-for="@Model.Job.Status" class="form-control" />
+                <span asp-validation-for="@Model.Job.Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SalaryRange" class="control-label"></label>
-                <input asp-for="SalaryRange" class="form-control" />
-                <span asp-validation-for="SalaryRange" class="text-danger"></span>
+                @Html.LabelFor(model => model.Job.SalaryRange)
+                <input asp-for="@Model.Job.SalaryRange" class="form-control" />
+                <span asp-validation-for="@Model.Job.SalaryRange" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
+                @Html.LabelFor(model => model.Job.Notes)
+                <input asp-for="@Model.Job.Notes" class="form-control" />
+                <span asp-validation-for="@Model.Job.Notes" class="text-danger"></span>
             </div>
+            <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.Job.Company.CompanyName)
+                @Html.DropDownList(
+                            "Job.Company.CompanyName",
+                            @Model.CompanyList,
+                            new
+                            {
+                                @name = "Job.Company.CompanyName"
+                            }
+                        )
+                @Html.ValidationMessageFor(model => model.Job.Company.CompanyName, "", new { @class="text-danger"})
+            </div>
+        </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

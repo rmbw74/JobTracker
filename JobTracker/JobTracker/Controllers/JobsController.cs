@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JobTracker.Data;
 using JobTracker.Models;
+using JobTracker.Models.JobViewModels;
 
 namespace JobTracker.Controllers
 {
@@ -46,7 +47,8 @@ namespace JobTracker.Controllers
         // GET: Jobs/Create
         public IActionResult Create()
         {
-            return View();
+            CreateJobViewModel model = new CreateJobViewModel(_context);
+            return View(model);
         }
 
         // POST: Jobs/Create
@@ -56,6 +58,7 @@ namespace JobTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Location,Status,SalaryRange,Notes")] Job job)
         {
+            CreateJobViewModel model = new CreateJobViewModel(_context);
             if (ModelState.IsValid)
             {
                 _context.Add(job);

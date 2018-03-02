@@ -32,5 +32,8 @@ namespace JobTracker.Models
 
         public string Industry { get; set; }
 
+        //foreign key
+        public virtual ICollection<Job> Jobs { get; set; }
+
     }
 }
