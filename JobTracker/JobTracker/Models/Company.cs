@@ -20,8 +20,15 @@ namespace JobTracker.Models
         public string Street { get; set; }
 
         [Required]
+        public string City { get; set; }
+
+        [Required]
         [StringLength(2)]
         public string State { get; set; }
+
+        [Required]
+        [StringLength(5)]
+        public string Zipcode { get; set; }
 
         public string Industry { get; set; }
 
